@@ -45,8 +45,14 @@ then
 
 	echo -e "Lancer un container : "
 	read container_name
+	echo -e "Avec quels parametres : ex: -d ou -itd, ect..."
+	echo -e "Si le container ne redemarre pas, mauvais parametres !"
+	read params
+	echo -e "Processus a laisser en foreground"
+	echo -e "ex: /usr/sbin/apache2ctl -D FOREGROUND"
+	read fg_process
 	echo -e "----------------------------------------------"
-	dkr_pid=$(docker run -d $container_name | cut -d' ' -f1)
+	dkr_pid=$(docker run $params $container_name $fg_process | cut -d' ' -f1)
 	echo -e "----------------------------------------------"
 
 else
@@ -59,7 +65,14 @@ else
 	echo  -e "Le container va etre detruit puis relance"
 	dkr_img=$(docker inspect --format='{{ .Image}}' $container_name)
 	docker kill $container_name
-	dkr_pid=$(docker run -d $dkr_img | cut -d' ' -f1)
+
+	echo -e "Avec quels parametres : ex: -d ou -itd, ect..."
+	echo -e "Si le container ne redemarre pas, mauvais parametres !"
+	read params
+	echo -e "Processus a laisser en foreground"
+	echo -e "ex: /usr/sbin/apache2ctl -D FOREGROUND"
+	read fg_process
+	dkr_pid=$(docker run $params $dkr_img $fg_process | cut -d' ' -f1)
 	container_name=$(docker inspect --format=' {{ .Name}} ' $dkr_pid)
 	container_name=$(echo $container_name | sed 's/[/]//g')
 	echo $container_name
