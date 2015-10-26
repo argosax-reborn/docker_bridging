@@ -9,3 +9,4 @@ with pipework from jpetazzo -> https://github.com/jpetazzo/pipework
 
 ##Prerequisties
 pipework with a ln -s in /usr/bin/ because the script calls for pipework
+docker & bridge-utils
