@@ -1,4 +1,5 @@
 # Stop docker and delete br0
+apt-get install bridge-utils
 echo -e "D0ckEr_BrIdGiNg - MAJES"
 echo -e "Crée un pont entre host et container docker"
 echo -e "(docker)--(pipework)--(dockerhost)--(LAN)--(ROUTER)--(WAN)"
