@@ -32,7 +32,7 @@ echo -e "Ajout de br0"
 brctl addbr br0
 
 echo -e "Quelle IP pour br0 : "
-read -e -p  bridgeip
+read bridgeip
 
 echo -e "Quel masque pour br0 :  au format CIDR ex: /24"
 echo -e "Par defaut : /24"
