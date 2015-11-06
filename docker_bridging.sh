@@ -1,11 +1,22 @@
 # Stop docker and delete br0
 apt-get install bridge-utils
-echo -e "D0ckEr_BrIdGiNg - MAJES"
+
+
+
+echo -e "------------------------------------------------------------------------"
+echo -e "     _            _               _          _     _       "
+echo -e "  __| | ___   ___| | _____ _ __  | |__  _ __(_) __| | __ _(_)_ __   __ _"
+echo -e " / _- |/ _ \ / __| |/ / _ \ -__| | -_ \| -__| |/ _- |/ _- | | -_ \ / _- |"
+echo -e "| (_| | (_) | (__|   <  __/ |    | |_) | |  | | (_| | (_| | | | | | (_| |"
+echo -e " \__,_|\___/ \___|_|\_\___|_|    |_.__/|_|  |_|\__,_|\__, |_|_| |_|\__, |"
+echo -e "                                                     |___/         |___/"
+echo -e "------------------------------------------------------------------------"
+echo -e "Docker Bridging - https://github.com/argosax-reborn"
 echo -e "Crée un pont entre host et container docker"
 echo -e "(docker)--(pipework)--(dockerhost)--(LAN)--(ROUTER)--(WAN)"
 
-echo -e "---------------------------------------------------------"
-echo -e "    -------------------------------------------------    "
+echo -e "------------------------------------------------------------------------"
+echo -e "    ----------------------------------------------------------------    "
 echo -e "Nettoyage bridges"
 ip link set dev br0 down
 brctl delif docker0 eth0
@@ -21,7 +32,7 @@ echo -e "Ajout de br0"
 brctl addbr br0
 
 echo -e "Quelle IP pour br0 : "
-read bridgeip
+read -e -p  bridgeip
 
 echo -e "Quel masque pour br0 :  au format CIDR ex: /24"
 echo -e "Par defaut : /24"
